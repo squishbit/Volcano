@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>BlackCaps.h</itemPath>
+      <itemPath>GridReference.h</itemPath>
+      <itemPath>Minimax.h</itemPath>
+      <itemPath>Pyramid.h</itemPath>
+      <itemPath>VolcanoBoard.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>BlackCaps.cpp</itemPath>
+      <itemPath>GridReference.cpp</itemPath>
+      <itemPath>Minimax.cpp</itemPath>
+      <itemPath>Pyramid.cpp</itemPath>
+      <itemPath>VolcanoBoard.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f2"
+                     displayName="BlackCapTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/BlackCapTest.cpp</itemPath>
+        <itemPath>tests/BlackCapTest.h</itemPath>
+        <itemPath>tests/bctestrunner.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3"
+                     displayName="GridReferenceTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/GridReferenceTest.cpp</itemPath>
+        <itemPath>tests/GridReferenceTest.h</itemPath>
+        <itemPath>tests/grtestrunner.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="PyramidTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/PyramidTest.cpp</itemPath>
+        <itemPath>tests/PyramidTest.h</itemPath>
+        <itemPath>tests/pytestrunner.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4"
+                     displayName="VolcanoBoardTest"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/VolcanoBoardTest.cpp</itemPath>
+        <itemPath>tests/VolcanoBoardTest.h</itemPath>
+        <itemPath>tests/vbtestrunner.cpp</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+      </compileType>
+      <item path="BlackCaps.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BlackCaps.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GridReference.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GridReference.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Minimax.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Minimax.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Pyramid.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Pyramid.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VolcanoBoard.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VolcanoBoard.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/BlackCapTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/BlackCapTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/GridReferenceTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/GridReferenceTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/PyramidTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/PyramidTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/VolcanoBoardTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/VolcanoBoardTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/bctestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/grtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/pytestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/vbtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="BlackCaps.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="BlackCaps.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GridReference.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GridReference.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Minimax.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Minimax.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Pyramid.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Pyramid.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VolcanoBoard.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VolcanoBoard.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/BlackCapTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/BlackCapTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/GridReferenceTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/GridReferenceTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/PyramidTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/PyramidTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/VolcanoBoardTest.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/VolcanoBoardTest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/bctestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/grtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/pytestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="tests/vbtestrunner.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
