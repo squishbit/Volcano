@@ -12,12 +12,13 @@
 
 class Minimax {
 public:
-    Minimax(bool (*endCondFunc)(const VolcanoBoard&)) : endCondition(endCondFunc) {}
+    Minimax(bool (*endCondFunc)(const VolcanoBoard&), int (*scoreFunc)(const VolcanoBoard&)) : endCondition(endCondFunc), getScore(scoreFunc) {}
     Minimax(const Minimax& orig);
-    void doMinimax();
+    int doMinimax(std::vector<VolcanoBoard>& res, const VolcanoBoard& vb, int depth);
     bool testEndCondition(const VolcanoBoard& vb) { return this->endCondition(vb); }
 private:
     bool (*endCondition)(const VolcanoBoard&);
+    int (*getScore)(const VolcanoBoard&);
 };
 
 

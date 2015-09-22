@@ -40,8 +40,8 @@ class GridReference
         Direction getDirection(const GridReference& to) const {
             return Direction(to.row - row, to.col - col);
         }
-        void move(int ns, int ew) { row += ns; col += ew; }
-        void move(const Direction& d) { move(d.ns, d.ew); }
+        GridReference& move(int ns, int ew) { row += ns; col += ew; return *this; }
+        GridReference& move(const Direction& d) { return move(d.ns, d.ew); }
         GridReference moved(int ns, int ew) const { return GridReference(row+ns, col+ew); }
         GridReference moved(const Direction& d) const { return moved(d.ns, d.ew); }
         std::vector<GridReference> getAdjacent() const;

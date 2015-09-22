@@ -20,15 +20,28 @@
 using namespace std;
 
 bool tmpGameOverFunc (const VolcanoBoard& vb) {
-    return vb.hasATree();
+    // return vb.hasATree();
+    return (vb.calculateScore(1) >= 2 || vb.calculateScore(0) >= 2); // either player has score 2
+}
+
+int tmpScoreFunc (const VolcanoBoard& vb) {
+    // curr player's score - opponents score
+    return vb.calculateScore() - vb.calculateScore(!vb.getPlayer());
 }
 
 /*
  * 
  */
 int main(int argc, char** argv) {
-    //Minimax minmax(&tmpGameOverFunc);
-    //VolcanoBoard vb;
+    
+    Minimax minmax(&tmpGameOverFunc, &tmpScoreFunc);
+    std::vector<VolcanoBoard> res;
+    VolcanoBoard vb;
+    vb.init();
+    minmax.doMinimax(res, vb, 2);
+    cout << res.size() << endl;
+    cout << res.back() << endl;
+    
     //cout << "minimax: " << minmax.testEndCondition(vb) << endl;
     
     
@@ -62,7 +75,6 @@ int main(int argc, char** argv) {
     cout << volcanoBoard << endl;
     int result = volcanoBoard.calculateScore(player);
     cout << result << endl;*/
-
     
     return 0;
 }

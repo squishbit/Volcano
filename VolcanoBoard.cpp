@@ -15,18 +15,41 @@
 #define SCORE_MIXED_TREE 5
 #define SCORE_SINGLE 1
 
+VolcanoBoard::VolcanoBoard(const VolcanoBoard& orig) {
+    player = orig.player;
+    blackCaps = orig.blackCaps;
+    for (unsigned int i = 0; i < WIDTH; i++) {
+        for (unsigned int j = 0; j < WIDTH; j++) {
+            board[i][j] = orig.board[i][j];
+        }
+    }
+    stash[0] = orig.stash[0];
+    stash[1] = orig.stash[1];
+}
+
+
 VolcanoBoard::VolcanoBoard()
 {
     player = 0;
-
     blackCaps = BlackCaps();
+    // init();
+}
+
+void VolcanoBoard::init() {
     /* TODO toggle black caps on and off
+    initBlackCaps();*/
+    initPyramids();
+}
+
+void VolcanoBoard::initBlackCaps() {
     blackCaps.addCap(GridReference(4,0));
     blackCaps.addCap(GridReference(3,1));
     blackCaps.addCap(GridReference(2,2));
     blackCaps.addCap(GridReference(1,3));
-    blackCaps.addCap(GridReference(0,4));*/
-    
+    blackCaps.addCap(GridReference(0,4));
+}
+
+void VolcanoBoard::initPyramids() {
     for (unsigned int pips = PIPS; pips > 0; pips--) {
         unsigned int colour = 0;
         board[0][0].push_back(Pyramid(colour, pips));
@@ -65,10 +88,6 @@ VolcanoBoard::VolcanoBoard()
     }
 }
 
-void VolcanoBoard::capturePiece(Pyramid p) {
-    capturePiece(p, player);
-}
-
 /**
  * inserts pieces into stash in sorted order
  * @param py pyramid to capture
@@ -84,7 +103,7 @@ void VolcanoBoard::capturePiece(Pyramid py, bool pl) {
 
 bool VolcanoBoard::canCapturePiece(const Pyramid &p, const GridReference &gr) const {
     const std::vector<Pyramid>& volc = getStack(gr);
-    return (volc.back().getPips() == p.getPips());
+    return (volc.size() >0 && volc.back().getPips() == p.getPips());
 }
 
 /**
@@ -99,11 +118,7 @@ bool VolcanoBoard::erupt(GridReference gr, Direction di) {
     std::vector<Pyramid>& volc = getStack(gr);
     bool hasErupted = false;
     gr.move(di);
-    while (!volc.empty() && gr.canMove(di)) {
-        gr.move(di);
-        if (blackCaps.hasCap(gr)) {
-            break;
-        }
+    while (!volc.empty() && gr.canMove(di) && !blackCaps.hasCap(gr.move(di))) {
         if (canCapturePiece(volc.back(), gr)) {
             // if size matches the top pyramid, capture
             capturePiece(volc.back());
@@ -115,6 +130,24 @@ bool VolcanoBoard::erupt(GridReference gr, Direction di) {
         hasErupted = true;
     }
     return hasErupted;
+}
+
+/**
+ * checks if a given move will result in eruption
+ * 
+ * @param gr which volcano to erupt
+ * @param di which direction to erupt in
+ * @param bc (optional) use this black caps layout instead of default
+ * @return whether the eruption will occur
+ */
+bool VolcanoBoard::willErupt(GridReference gr, Direction di, const BlackCaps& bc) const {
+    const std::vector<Pyramid>& volc = getStack(gr);
+    gr.move(di);
+    if (volc.size() >= 1 && gr.canMove(di) && !bc.hasCap(gr.move(di))) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -311,3 +344,55 @@ int score(const VolcanoBoard& vb, bool player) {
 }
     
  */
+
+VolcanoMoveGen::VolcanoMoveGen(const VolcanoBoard& vb) : orig(vb) {
+    isDone = false;
+    currRow = 0;
+    currCol = 0;
+    dirsFromHere = GridReference(currRow, currCol).getValidMoves();
+    currDir = dirsFromHere.begin();
+    lastDir = dirsFromHere.end();
+    if (!orig.willErupt(GridReference(currRow, currCol), *currDir)) {
+        findNextValid();
+    }
+}
+
+void VolcanoMoveGen::step() {
+    // TODO: add black caps?
+    currDir++;
+    
+    if (currDir == lastDir) {
+        // increment currRow/Col, reset currDir/lastDir
+        currCol++;
+        if (currCol >= WIDTH) {
+            currRow++;
+            currCol = 0;
+        }
+        if (currRow >= WIDTH) {
+            isDone = true;
+            return;
+        }
+        dirsFromHere = GridReference(currRow, currCol).getValidMoves();
+        currDir = dirsFromHere.begin();
+        lastDir = dirsFromHere.end();
+    }
+}
+
+void VolcanoMoveGen::findNextValid() {
+    // TODO: add black caps?
+    do {
+        step();
+    } while (!isDone && !orig.willErupt(GridReference(currRow, currCol), *currDir));
+}
+
+VolcanoMoveGen& VolcanoMoveGen::operator++(int i) {
+    findNextValid();
+    return *this;
+}
+
+VolcanoBoard VolcanoMoveGen::operator*() {
+    // TODO: add black caps?
+    VolcanoBoard newVb(orig);
+    newVb.erupt(GridReference(currRow, currCol), *currDir);
+    return newVb;
+}
