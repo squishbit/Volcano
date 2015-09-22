@@ -24,6 +24,7 @@ class BlackCapTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testGetGridReferences);
     CPPUNIT_TEST(testGetSafeAdjacent_Corner);
     CPPUNIT_TEST(testGetSafeAdjacent_CanMove);
+    CPPUNIT_TEST(testGetAllSafeReachable_Empty);
     CPPUNIT_TEST(testGetAllSafeReachable_CantMove);
     CPPUNIT_TEST(testGetAllSafeReachable_CornerStart);
     CPPUNIT_TEST(testHasCap_int);
@@ -57,6 +58,7 @@ private:
     void testGetSafeAdjacent_Corner();
     void testGetSafeAdjacent_CanMove();
     void testGetAllSafeReachable_CantMove();
+    void testGetAllSafeReachable_Empty();
     void testGetAllSafeReachable_CornerStart();
     void testGetGridReferences();
     void testHasCap_int();

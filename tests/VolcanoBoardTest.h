@@ -20,8 +20,11 @@ class VolcanoBoardTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(testCalculateScore_AllOfTheAbove);
     CPPUNIT_TEST(testCalculateScore_NothingConnects);
     CPPUNIT_TEST(testCanCapturePiece);
-    CPPUNIT_TEST(testChangePlayer);
     CPPUNIT_TEST(testErupt);
+    CPPUNIT_TEST(testErupt_diffBlackCaps);
+    CPPUNIT_TEST(testErupt_blackCap);
+    CPPUNIT_TEST(testErupt_offBoard);
+    CPPUNIT_TEST(testErupt_emptyStack);
     CPPUNIT_TEST(testIsGameOver_p1);
     CPPUNIT_TEST(testIsGameOver_p2);
     CPPUNIT_TEST(testHasATree_p1);
@@ -43,8 +46,11 @@ private:
     void testCalculateScore_AllOfTheAbove();
     void testCalculateScore_NothingConnects();
     void testCanCapturePiece();
-    void testChangePlayer();
     void testErupt();
+    void testErupt_diffBlackCaps();
+    void testErupt_blackCap();
+    void testErupt_offBoard();
+    void testErupt_emptyStack();
     void testIsGameOver_p1();
     void testIsGameOver_p2();
     void testHasATree_p1();

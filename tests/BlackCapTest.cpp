@@ -109,6 +109,12 @@ void BlackCapTest::testGetSafeAdjacent_CanMove() {
     CPPUNIT_ASSERT(result.size() == 3);
 }
 
+void BlackCapTest::testGetAllSafeReachable_Empty() {
+    BlackCaps blackCaps;
+    std::set<BlackCaps> result = blackCaps.getAllSafeReachable();
+    CPPUNIT_ASSERT(result.size() == 1);
+}
+
 void BlackCapTest::testGetAllSafeReachable_CantMove() {
     BlackCaps blackCaps;
     blackCaps.addCap(GridReference(0,0));
